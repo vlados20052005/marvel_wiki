@@ -1,0 +1,46 @@
+import { Link, NavLink, Outlet } from "react-router-dom";
+import "./appHeader.scss";
+
+const AppHeader = () => {
+  return (
+    <header className="app__header">
+      <h1 className="app__title">
+        <Link to="/">
+          <span>Marvel</span> information portal
+        </Link>
+      </h1>
+      <nav className="app__menu">
+        <ul>
+          <li>
+            <NavLink
+              end
+              style={({ isActive }) => ({
+                color: isActive ? "#9f0013" : "inherit",
+              })}
+              className="active"
+              to="/"
+            >
+              Characters
+            </NavLink>
+          </li>
+          /
+          <li>
+            <NavLink
+              end
+              style={({ isActive }) => ({
+                color: isActive ? "#9f0013" : "inherit",
+              })}
+              to="/comics"
+            >
+              Comics
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+      {/* The Outlet component is used to render the child routes */}
+      <Outlet />
+    </header>
+  );
+};
+
+export default AppHeader;
